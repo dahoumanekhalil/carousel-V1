@@ -18,18 +18,24 @@ let mapSlides = document.querySelectorAll('.regular ul li');
 // function of reset currant slide with prev button 
 slidePrevBtn.addEventListener('click', () => {
     if(currantSlide < 1) {
-        return false;
+        // for make loop round slides 
+        currantSlide = counter - 1;
+        checking();
     } else {
+        // for change slide one by one
         currantSlide--;
-        checking()
+        checking();
     };
 });
 
 // function of reset currant slide with next button 
 slideNextBtn.addEventListener('click', () => {
     if(currantSlide >= counter - 1) {
-        return false;
+        // for make loop round slides 
+        currantSlide = 0
+        checking();
     } else {
+        // for change slide one by one
         currantSlide++;
         checking();
     };
@@ -41,12 +47,12 @@ function removeActiveClasses() {
 
     // remove active class from all regular li 
     mapSlides.forEach((ele) => {
-        ele.classList.remove('active')
+        ele.classList.remove('active');
     });
 
     // remove active class from all image slides 
     slideImage.forEach((ele) => {
-        ele.classList.remove('active')
+        ele.classList.remove('active');
     });
 };
 
@@ -67,8 +73,8 @@ function addActiveClass(ele) {
 
 mapSlides.forEach((ele) => {
     ele.addEventListener('click', () => {
-        // removeActiveClasses()
+        // removeActiveClasses();
         currantSlide = +ele.getAttribute('data-number') - 1;
-        checking()
+        checking();
     })
 });
